@@ -25,7 +25,7 @@ export default function HeroSection() {
           <p style={{ color: "#b0b6bb", maxWidth: 500 }}>
             I am a BSCS student at the University of Sargodha. I am passionate about web development and love exploring new ideas and possibilities in the world of technology.
           </p>
-          <a href="#contact" className="btn btn-danger mt-3 px-4 py-2 fw-bold">
+          <a href="#resume" className="btn btn-danger mt-3 px-4 py-2 fw-bold">
             Contact me
           </a>
         </div>
@@ -99,6 +99,10 @@ export default function HeroSection() {
               width: 100%;
               min-width: 0;
               text-align: center;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              justify-content: center;
             }
             .hero-img-frame {
               width: 270px;
@@ -117,8 +121,20 @@ export default function HeroSection() {
           @media (max-width: 600px) {
             .hero-container {
               flex-direction: column-reverse;
+              align-items: center;
+              justify-content: center;
+              min-height: 100vh;
               gap: 18px;
               padding: 30px 4vw 10px 4vw;
+            }
+            .hero-left, .hero-right {
+              width: 100%;
+              min-width: 0;
+              text-align: center;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              justify-content: center;
             }
             .hero-img-frame {
               width: 180px;

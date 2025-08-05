@@ -1,19 +1,34 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import logo from '../assets/logo.jpg';
 
 export default function Header() {
   const [open, setOpen] = useState(false);
 
+  // Prevent background scroll when menu is open (mobile)
+  useEffect(() => {
+    if (open) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
+
+  // Close menu on link click (mobile)
+  const handleMenuClick = () => setOpen(false);
+
   return (
     <header
       style={{
         background: "#000",
-        borderBottom: "2px solid #fff1f1",
+        borderBottom: "2px solid #e74c3c",
         position: "fixed",
         top: 0,
         width: "100%",
         zIndex: 1000,
-        minHeight: 60,
+        minHeight: 56,
       }}
     >
       <div
@@ -22,18 +37,29 @@ export default function Header() {
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
-          padding: "0 30px",
-          height: 60,
+          padding: "0 16px",
+          height: 56,
         }}
       >
         {/* Logo in Red Circle */}
-        <div>
+        <div
+          style={{
+            width: 38,
+            height: 38,
+            borderRadius: "50%",
+            border: "2.5px solid #e74c3c",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            background: "#111",
+          }}
+        >
           <img
             src={logo}
             alt="Logo"
             style={{
-              width: 40,
-              height: 40,
+              width: 28,
+              height: 28,
               borderRadius: "50%",
               objectFit: "cover",
             }}
@@ -48,6 +74,7 @@ export default function Header() {
             flexDirection: "column",
             cursor: "pointer",
             marginLeft: "auto",
+            zIndex: 3001,
           }}
           onClick={() => setOpen(!open)}
         >
@@ -61,7 +88,7 @@ export default function Header() {
           className={`menu-list d-flex mb-0 ${open ? "open" : ""}`}
           style={{
             listStyle: "none",
-            gap: "2.5rem",
+            gap: "2.2rem",
             fontWeight: 700,
             letterSpacing: 1,
             alignItems: "center",
@@ -74,6 +101,7 @@ export default function Header() {
               href="#home"
               className="text-white text-uppercase text-decoration-none"
               style={{ letterSpacing: 1 }}
+              onClick={handleMenuClick}
             >
               HOME
             </a>
@@ -83,6 +111,7 @@ export default function Header() {
               href="#about"
               className="text-white text-uppercase text-decoration-none"
               style={{ letterSpacing: 1 }}
+              onClick={handleMenuClick}
             >
               ABOUT ME
             </a>
@@ -92,6 +121,7 @@ export default function Header() {
               href="#resume"
               className="text-white text-uppercase text-decoration-none"
               style={{ letterSpacing: 1 }}
+              onClick={handleMenuClick}
             >
               RESUME
             </a>
@@ -104,10 +134,10 @@ export default function Header() {
         {`
           @media (max-width: 900px) {
             .header-container {
-              padding: 0 10px !important;
+              padding: 0 8px !important;
             }
             .menu-list {
-              gap: 1.2rem !important;
+              gap: 1.1rem !important;
               font-size: 15px !important;
             }
           }
@@ -116,22 +146,34 @@ export default function Header() {
               display: flex !important;
             }
             .menu-list {
-              position: absolute;
-              top: 60px;
+              position: fixed;
+              top: 56px;
+              left: 0;
               right: 0;
               background: #111;
               flex-direction: column;
               width: 100vw;
               align-items: flex-start !important;
-              padding: 20px 0 20px 30px;
-              gap: 1.5rem !important;
+              padding: 18px 0 18px 24px;
+              gap: 1.2rem !important;
               font-size: 17px !important;
               display: none;
-              z-index: 2000;
+              z-index: 3000;
               box-shadow: 0 8px 32px 0 rgba(0,0,0,0.18);
+              border-bottom-left-radius: 18px;
+              border-bottom-right-radius: 18px;
             }
             .menu-list.open {
               display: flex !important;
+            }
+            .header-container {
+              height: 56px !important;
+            }
+            .menu-list li a {
+              font-size: 1.1rem !important;
+              padding: 8px 0;
+              display: block;
+              width: 100%;
             }
           }
         `}

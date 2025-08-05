@@ -12,7 +12,7 @@ export default function Footer() {
       }}
     >
       <div
-        className="container"
+        className="footer-container"
         style={{
           display: "flex",
           flexDirection: "column",
@@ -23,7 +23,7 @@ export default function Footer() {
         <div style={{ fontWeight: 700, fontSize: 20, letterSpacing: 1, marginBottom: 2 }}>
           Muhammad Tayyab
         </div>
-        <div style={{ display: "flex", gap: 18, fontSize: 22, marginBottom: 2 }}>
+        <div className="footer-icons" style={{ display: "flex", gap: 18, fontSize: 22, marginBottom: 2 }}>
           <a
             href="https://github.com/tayyabp0g"
             target="_blank"
@@ -36,7 +36,7 @@ export default function Footer() {
             <FaGithub />
           </a>
           <a
-            href="muhammadtayyab3753@gmail.com"
+            href="mailto:muhammadtayyab3753@gmail.com"
             style={{ color: "#fff", transition: "color 0.2s" }}
             onMouseOver={e => (e.currentTarget.style.color = "#e74c3c")}
             onMouseOut={e => (e.currentTarget.style.color = "#fff")}
@@ -45,7 +45,7 @@ export default function Footer() {
             <FaEnvelope />
           </a>
           <a
-            href="www.linkedin.com/in/muhammad-tayyab-12b816279"
+            href="https://www.linkedin.com/in/muhammad-tayyab-12b816279"
             target="_blank"
             rel="noopener noreferrer"
             style={{ color: "#fff", transition: "color 0.2s" }}
@@ -60,6 +60,24 @@ export default function Footer() {
           &copy; {new Date().getFullYear()} Muhammad Tayyab. All Rights Reserved.
         </div>
       </div>
+
+      {/* Responsive CSS */}
+      <style>
+        {`
+          @media (max-width: 600px) {
+            .footer-container {
+              padding: 0 8px;
+            }
+            .footer-icons {
+              gap: 12px !important;
+              font-size: 18px !important;
+            }
+            footer {
+              padding: 12px 0 6px 0 !important;
+            }
+          }
+        `}
+      </style>
     </footer>
   );
 }

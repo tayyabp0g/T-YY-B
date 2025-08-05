@@ -17,70 +17,20 @@ export default function Resume() {
         justifyContent: "center",
       }}
     >
-      <div
-        className="container"
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          gap: 40,
-          maxWidth: 1400,
-        }}
-      >
+      <div className="resume-container">
         {/* Left: Profile Card */}
-        <div
-          style={{
-            background: "#232323",
-            borderRadius: 32,
-            padding: "16px 40px",
-            width: 370,
-            minWidth: 280,
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            boxShadow: "0 8px 32px 0 rgba(0,0,0,0.18)",
-          }}
-        >
-          <div
-            style={{
-              background: "#181818",
-              border: "6px solid #e74c3c",
-              borderRadius: "50%",
-              width: 150,
-              height: 150,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              marginBottom: 28,
-              overflow: "hidden",
-            }}
-          >
+        <div className="resume-profile">
+          <div className="resume-profile-img-frame">
             <img
               src={myPic}
               alt="Muhammad Tayyab"
-              style={{
-                width: 138,
-                height: 138,
-                objectFit: "cover",
-                filter: "grayscale(100%)",
-                borderRadius: "50%",
-              }}
+              className="resume-profile-img"
             />
           </div>
-          <h2 style={{ color: "#fff", fontWeight: 700, fontSize: 30, marginBottom: 10, textAlign: "center" }}>
+          <h2 className="resume-profile-name">
             Muhammad Tayyab
           </h2>
-          <div
-            style={{
-              background: "#111",
-              color: "#fff",
-              borderRadius: 10,
-              padding: "7px 20px",
-              fontWeight: 500,
-              fontSize: 16,
-              marginBottom: 28,
-              textAlign: "center"
-            }}
-          >
+          <div className="resume-profile-title">
             Computer Science Student
           </div>
           <div style={{ width: "100%", marginBottom: 16 }}>
@@ -92,30 +42,11 @@ export default function Resume() {
         </div>
 
         {/* Right: Resume Content */}
-        <div
-          style={{
-            flex: 1,
-            display: "grid",
-            gridTemplateColumns: "2fr 1fr",
-            gap: 40,
-          }}
-        >
+        <div className="resume-content">
           {/* Main Resume */}
           <div>
             {/* Resume Header */}
-            <div
-              style={{
-                background: "#e74c3c",
-                color: "#fff",
-                borderRadius: "0 0 24px 0",
-                padding: "12px 38px",
-                fontWeight: 700,
-                fontSize: 32,
-                marginBottom: 28,
-                width: "fit-content",
-                boxShadow: "0 4px 16px 0 rgba(0,0,0,0.10)",
-              }}
-            >
+            <div className="resume-header">
               Resume
             </div>
             {/* Profile */}
@@ -167,11 +98,147 @@ export default function Resume() {
               <li>Information Security, Networking</li>
               <li>Machine Learning (Basic)</li>
             </ul>
-           
-            
           </div>
         </div>
       </div>
+
+      {/* Responsive CSS */}
+      <style>
+        {`
+          .resume-container {
+            display: flex;
+            flex-direction: row;
+            gap: 40px;
+            max-width: 1400px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 0 30px;
+          }
+          .resume-profile {
+            background: #232323;
+            border-radius: 32px;
+            padding: 24px 32px;
+            width: 370px;
+            min-width: 240px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-shadow: 0 8px 32px 0 rgba(0,0,0,0.18);
+            margin-bottom: 24px;
+          }
+          .resume-profile-img-frame {
+            background: #181818;
+            border: 6px solid #e74c3c;
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 28px;
+            overflow: hidden;
+          }
+          .resume-profile-img {
+            width: 138px;
+            height: 138px;
+            object-fit: cover;
+            filter: grayscale(100%);
+            border-radius: 50%;
+          }
+          .resume-profile-name {
+            color: #fff;
+            font-weight: 700;
+            font-size: 30px;
+            margin-bottom: 10px;
+            text-align: center;
+          }
+          .resume-profile-title {
+            background: #111;
+            color: #fff;
+            border-radius: 10px;
+            padding: 7px 20px;
+            font-weight: 500;
+            font-size: 16px;
+            margin-bottom: 28px;
+            text-align: center;
+          }
+          .resume-content {
+            flex: 1;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+          }
+          .resume-header {
+            background: #e74c3c;
+            color: #fff;
+            border-radius: 0 0 24px 0;
+            padding: 12px 38px;
+            font-weight: 700;
+            font-size: 32px;
+            margin-bottom: 28px;
+            width: fit-content;
+            box-shadow: 0 4px 16px 0 rgba(0,0,0,0.10);
+          }
+          @media (max-width: 1100px) {
+            .resume-container {
+              flex-direction: column;
+              align-items: center;
+              gap: 24px;
+              padding: 0 10px;
+            }
+            .resume-content {
+              grid-template-columns: 1fr;
+              gap: 24px;
+              width: 100%;
+            }
+            .resume-profile {
+              width: 100%;
+              min-width: 0;
+              margin-bottom: 0;
+            }
+          }
+          @media (max-width: 700px) {
+            .resume-container {
+              flex-direction: column;
+              align-items: center;
+              gap: 16px;
+              padding: 0 4vw;
+            }
+            .resume-profile {
+              padding: 16px 8px;
+              border-radius: 18px;
+            }
+            .resume-profile-img-frame {
+              width: 90px;
+              height: 90px;
+              margin-bottom: 16px;
+            }
+            .resume-profile-img {
+              width: 80px;
+              height: 80px;
+            }
+            .resume-profile-name {
+              font-size: 20px;
+              margin-bottom: 6px;
+            }
+            .resume-profile-title {
+              font-size: 13px;
+              padding: 5px 10px;
+              margin-bottom: 16px;
+            }
+            .resume-content {
+              grid-template-columns: 1fr;
+              gap: 16px;
+              width: 100%;
+            }
+            .resume-header {
+              font-size: 22px;
+              padding: 8px 18px;
+              border-radius: 0 0 12px 0;
+            }
+          }
+        `}
+      </style>
     </section>
   );
 }
